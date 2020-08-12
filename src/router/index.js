@@ -1,29 +1,54 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from "vue";
+import VueRouter from "vue-router";
 
+Vue.use(VueRouter);
+const Login = () => import("@/views/Login");
+const Register = () => import("@/views/Register");
+const Home = () => import("@/views/Home");
+const Layout = () => import("@/views/Layout");
 
-Vue.use(VueRouter)
-const Login = () => import('@/views/Login');
-const Register = () => import('@/views/Register');
-
-  const routes = [
+const routes = [
   {
-    path: '/login',
-    name: 'Login',
-    component: Login
+    path: "/login",
+    name: "Login",
+    component: Login,
   },
   {
-    path: '/register',
-    name: 'Register',
-    component: Register
+    path: "/register",
+    name: "Register",
+    component: Register,
   },
-  
-]
+  {
+    path: "/",
+    name: "Home",
+    component: Home,
+  },
+];
 
+//实例化vue的时候只挂载routes
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
+export default router;
 
-export default router
+//异步挂载的路由
+//动态需要根据权限加载的路由表
+export const asyncRouterMap = [
+  {
+    path: "/permission",
+    component: Layout,
+    name: "权限测试",
+    meta: { role: ["admin", "super_editor"] }, //页面需要的权限
+    // children: [
+    //   {
+    //     path: "index",
+    //     component: Permission,
+    //     name: "权限测试页",
+    //     meta: { role: ["admin", "super_editor"] }, //页面需要的权限
+    //   },
+    // ],
+  },
+  { path: "*", redirect: "/404", hidden: true },
+];

@@ -51,6 +51,7 @@ export default {
       },
     };
   },
+
   methods: {
     submitForm() {
       this.$refs.login.validate((valid) => {
