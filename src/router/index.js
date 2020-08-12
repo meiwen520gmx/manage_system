@@ -1,13 +1,15 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import {} from "../Layout";//页面整体布局
 
 Vue.use(VueRouter);
 const Login = () => import("@/views/Login");
 const Register = () => import("@/views/Register");
-const Home = () => import("@/views/Home");
-const Layout = () => import("@/views/Layout");
+const Home = () => import("@/Layout/home");
+const Notice = () => import("@/views/CompanyNotice");
 
-const routes = [
+//默认不需要权限能访问的页面
+export const constantRouterMap = [
   {
     path: "/login",
     name: "Login",
@@ -22,14 +24,19 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
-  },
+	},
+	{
+    path: "/notice",
+    name: "Notice",
+    component: Notice,
+  }
 ];
 
-//实例化vue的时候只挂载routes
+//实例化vue的时候只挂载constantRouterMap
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
-  routes,
+  routes: constantRouterMap,
 });
 export default router;
 

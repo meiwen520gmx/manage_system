@@ -16,7 +16,10 @@ const store = new Vuex.Store({
   modules,
   getters: {
     token: state => state.user.token,
-    roles: state => state.user.roles,
+		roles: state => state.user.roles,
+		sidebar: state => state.menu.sidebar,
+		isCollapse: state => state.menu.isCollapse,
+		isFooter: state => state.menu.isFooter
   }
 });
 export default store;

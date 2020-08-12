@@ -1,6 +1,6 @@
 <template>
   <div>
-    layout
+    <h2>总账报表</h2>
   </div>
 </template>
 

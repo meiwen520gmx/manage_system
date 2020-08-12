@@ -1,13 +1,13 @@
 <template>
-  <div>
-    
-  </div>
+	<div>
+		<h2>会计</h2>
+	</div>
 </template>
 
 <script>
-  export default {
-    
-  }
+	export default {
+		
+	}
 </script>
 
 <style lang="less" scoped>
