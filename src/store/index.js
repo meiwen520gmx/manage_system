@@ -10,7 +10,6 @@ const modules = modulesFiles.keys().reduce((modules, modulePath) => {
   modules[moduleName] = value.default;
   return modules;
 }, {});
-console.log(modules)
 
 const store = new Vuex.Store({
   modules,
@@ -19,7 +18,12 @@ const store = new Vuex.Store({
 		roles: state => state.user.roles,
 		sidebar: state => state.menu.sidebar,
 		isCollapse: state => state.menu.isCollapse,
-		isFooter: state => state.menu.isFooter
+    isFooter: state => state.menu.isFooter,
+    roles: state => state.user.roles,
+    name: state => state.user.name,
+    avatar: state => state.user.avatar,
+    permission_routers: state => state.permission.routers,
+    addRouters: state => state.permission.addRouters
   }
 });
 export default store;

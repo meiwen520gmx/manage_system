@@ -6,9 +6,7 @@
         :src="logo"
         alt="company"
       />
-      <span class="title" v-show="sidebar.opened"
-        >Hi<i>Admin</i></span
-      >
+      <span class="title" v-show="sidebar.opened">Hi<i>Admin</i></span>
     </div>
     <div class="menu_page_bottom is-scroll-left">
       <el-menu
@@ -88,12 +86,19 @@ export default {
         bgColor: "#fff",
         textColor: "#666",
         activeTextColor: "#ff6428",
-			},
-			logo:logoImg
+      },
+      logo: logoImg,
     };
   },
   computed: {
-    ...mapGetters(["isCollapse", "sidebar", ""]),
+    ...mapGetters(["isCollapse", "sidebar", "permission_routers"]),
+  },
+  methods: {
+    getIindex(citem, item, cindex) {
+      return citem.meta.titleList
+        ? item.path + "/" + citem.path + "/" + citem.meta.titleList[0].path
+        : item.path + "/" + citem.path;
+    },
   },
 };
 </script>

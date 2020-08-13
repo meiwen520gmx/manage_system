@@ -1,5 +1,5 @@
-import Mock, { mock } from "mockjs";
-import { join } from "core-js/fn/array";
+import Mock from "mockjs";
+
 
 let List = [];
 const count = 1000;
@@ -61,7 +61,7 @@ export default {
         return {
           code: -1,
           data: {
-            msg: "用户名错误",
+            message: "用户名错误",
             status: "fail",
           },
         };

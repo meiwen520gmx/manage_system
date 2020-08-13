@@ -90,31 +90,35 @@ export const asyncRouterMap = [
     meta: {
       title: "财务管理",
       icon: "iconuser",
+      roles: ['boss', 'finance']
     },
     children:[
 			{
         path:'accounting', 
         name:'accounting',
 				meta:{
-					title:'会计管理'
+          title:'会计管理',
+          roles: ['boss', 'finance']
 				},
-				component: () => import('@/page/finance/Accounting'),
+				component: () => import('@/views/finance/Accounting'),
       },
       {
         path:'capitalReport', 
         name:'capitalReport',
 				meta:{
-					title:'总账报表'
+          title:'总账报表',
+          roles: ['boss', 'finance']
 				},
-				component: () => import('@/page/finance/CapitalReport'),
+				component: () => import('@/views/finance/CapitalReport'),
       },
       {
         path:'filemanage', 
         name:'filemanage',
 				meta:{
-					title:'档案管理'
+          title:'档案管理',
+          roles: ['boss', 'finance']
 				},
-				component: () => import('@/page/finance/FileManage'),
+				component: () => import('@/views/finance/FileManage'),
 			}
 		]
   },
@@ -125,23 +129,26 @@ export const asyncRouterMap = [
     meta: {
       title: "市场管理",
       icon: "iconuser",
+      roles: ['boss', 'market']
     },
     children:[
 			{
         path:'achievement', 
         name:'achievement',
 				meta:{
-					title:'业绩表'
+          title:'业绩表',
+          roles: ['boss', 'market']
 				},
-				component: () => import('@/page/market/Achievement'),
+				component: () => import('@/views/market/Achievement'),
       },
       {
         path:'markePlan', 
         name:'markePlan',
 				meta:{
-					title:'营销计划'
+          title:'营销计划',
+          roles: ['boss', 'market']
 				},
-				component: () => import('@/page/market/MakePlan'),
+				component: () => import('@/views/market/MakePlan'),
       }
 		]
   },
@@ -152,6 +159,7 @@ export const asyncRouterMap = [
     meta: {
       title: "员工管理",
       icon: "iconuser",
+      roles: ['boss', 'personManage']
     },
     noDropdown:true,
     children:[
@@ -159,9 +167,10 @@ export const asyncRouterMap = [
         path:'employeeList', 
         name:'employeeList',
 				meta:{
-					title:'员工管理'
+          title:'员工管理',
+          roles: ['boss', 'personManage']
 				},
-				component: () => import('@/page/personManage/EmployeeList'),
+				component: () => import('@/views/personManage/EmployeeList'),
       }
 		]
   },
@@ -172,6 +181,7 @@ export const asyncRouterMap = [
     meta: {
       title: "项目管理",
       icon: "iconuser",
+      roles: ['boss', 'technology']
     },
     noDropdown:true,
     children:[
@@ -179,9 +189,10 @@ export const asyncRouterMap = [
         path:'project', 
         name:'project',
 				meta:{
-					title:'项目管理'
+          title:'项目管理',
+          roles: ['boss', 'technology']
 				},
-				component: () => import('@/page/technology/Project'),
+				component: () => import('@/views/technology/Project'),
       }
 		]
   },

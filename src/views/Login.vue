@@ -36,6 +36,8 @@
 </template>
 
 <script>
+import { login } from "@/network/api/user";
+import { setToken } from "@/common/auth";
 export default {
   data() {
     return {
@@ -53,12 +55,17 @@ export default {
   },
 
   methods: {
+    //登录
     submitForm() {
       this.$refs.login.validate((valid) => {
         if (valid) {
-          this.$message.success("登录成功");
-          localStorage.setItem("ms_username", this.param.username);
-          this.$router.push("/");
+          let userinfo = this.param;
+          login(userinfo).then(res => {
+            let userInfo = res.data.userInfo;
+            setToken("token", userInfo.token);
+            this.$router.push({path: "/"});
+            this.$store.dispatch('initLeftMenu'); //设置左边菜单始终为展开状态
+          }) 
         } else {
           this.$message.error("请输入账号和密码");
           console.log("error submit!!");
