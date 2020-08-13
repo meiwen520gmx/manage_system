@@ -5,5 +5,7 @@
 </template>
 
 <style lang="less">
+@import "./assets/css/normalize.less";
 @import "./assets/css/common.less";
+@import "./assets/css/scrollBar.less";
 </style>

@@ -1,35 +1,75 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import {} from "../Layout";//页面整体布局
+import { Layout, Content } from "../Layout"; //页面整体布局
 
 Vue.use(VueRouter);
-const Login = () => import("@/views/Login");
-const Register = () => import("@/views/Register");
-const Home = () => import("@/Layout/home");
-const Notice = () => import("@/views/CompanyNotice");
 
 //默认不需要权限能访问的页面
 export const constantRouterMap = [
   {
+    path: "",
+    component: Layout,
+    redirect: "/index/index",
+    hidden: true,
+  },
+  {
+    path: "/index",
+    name: "index",
+    component: Layout,
+    meta: {
+      title: "首页",
+      icon: "icondashboard",
+    },
+    noDropdown: true,
+    children: [
+      {
+        path: "index",
+        meta: {
+          title: "首页",
+          icon: "icondashboard",
+        },
+        component: () => import("@/views/index/index"),
+      },
+    ],
+  },
+  {
+    path: "/notice",
+    name: "notice",
+    component: Layout,
+    meta: {
+      title: "公司公告",
+      icon: "icondashboard",
+    },
+    noDropdown: true,
+    children: [
+      {
+        path: "companyNotice",
+        meta: {
+          title: "公司公告",
+          icon: "icondashboard",
+        },
+        component: () => import("@/views/notice/CompanyNotice"),
+      },
+    ],
+  },
+  {
     path: "/login",
     name: "Login",
-    component: Login,
+    component: () => import("@/views/Login"),
+    hidden: true,
   },
   {
     path: "/register",
     name: "Register",
-    component: Register,
+    component: () => import("@/views/Register"),
+    hidden: true,
   },
-  {
-    path: "/",
-    name: "Home",
-    component: Home,
-	},
-	{
-    path: "/notice",
-    name: "Notice",
-    component: Notice,
-  }
+  // {
+  //   path: "/notice",
+  //   name: "Notice",
+  //   component: () => import("@/views/CompanyNotice"),
+  //   hidden: true,
+  // },
 ];
 
 //实例化vue的时候只挂载constantRouterMap
@@ -44,9 +84,105 @@ export default router;
 //动态需要根据权限加载的路由表
 export const asyncRouterMap = [
   {
-    path: "/permission",
+    path: "/finance",
+    name: "finance",
     component: Layout,
-    name: "权限测试",
-    meta: { role: ["admin", "super_editor"] }, //页面需要的权限
-  }
+    meta: {
+      title: "财务管理",
+      icon: "iconuser",
+    },
+    children:[
+			{
+        path:'accounting', 
+        name:'accounting',
+				meta:{
+					title:'会计管理'
+				},
+				component: () => import('@/page/finance/Accounting'),
+      },
+      {
+        path:'capitalReport', 
+        name:'capitalReport',
+				meta:{
+					title:'总账报表'
+				},
+				component: () => import('@/page/finance/CapitalReport'),
+      },
+      {
+        path:'filemanage', 
+        name:'filemanage',
+				meta:{
+					title:'档案管理'
+				},
+				component: () => import('@/page/finance/FileManage'),
+			}
+		]
+  },
+  {
+    path: "/market",
+    name: "market",
+    component: Layout,
+    meta: {
+      title: "市场管理",
+      icon: "iconuser",
+    },
+    children:[
+			{
+        path:'achievement', 
+        name:'achievement',
+				meta:{
+					title:'业绩表'
+				},
+				component: () => import('@/page/market/Achievement'),
+      },
+      {
+        path:'markePlan', 
+        name:'markePlan',
+				meta:{
+					title:'营销计划'
+				},
+				component: () => import('@/page/market/MakePlan'),
+      }
+		]
+  },
+  {
+    path: "/personManage",
+    name: "personManage",
+    component: Layout,
+    meta: {
+      title: "员工管理",
+      icon: "iconuser",
+    },
+    noDropdown:true,
+    children:[
+			{
+        path:'employeeList', 
+        name:'employeeList',
+				meta:{
+					title:'员工管理'
+				},
+				component: () => import('@/page/personManage/EmployeeList'),
+      }
+		]
+  },
+  {
+    path: "/technology",
+    name: "technology",
+    component: Layout,
+    meta: {
+      title: "项目管理",
+      icon: "iconuser",
+    },
+    noDropdown:true,
+    children:[
+			{
+        path:'project', 
+        name:'project',
+				meta:{
+					title:'项目管理'
+				},
+				component: () => import('@/page/technology/Project'),
+      }
+		]
+  },
 ];
