@@ -5,7 +5,7 @@
     id="header_container"
   >
     <div class="right-nav" ref="rightNav">
-      <div class="userinfo-right rflex">
+      <div class="userinfo-right">
         <div class="userinfo">
           <el-menu class="el-menu-demo" mode="horizontal">
             <!-- <el-submenu index="1" popper-class="langItem">
@@ -25,7 +25,7 @@
             <el-submenu index="2" popper-class="infoItem">
               <template slot="title">
                 <div class="welcome">
-                  <span class="name">{{name}},</span>
+                  <span class="name">{{name}}</span>
                   <!-- <span class="name avatarname">
                     {{ $t(`commons.${name}`) }}</span
                   > -->
@@ -96,7 +96,7 @@ export default {
   flex: 1;
   width: calc(100% - 180px);
   padding-right: 15px;
-  justify-content: space-between;
+  justify-content: flex-end;
   box-shadow: 0px 2px 5px 0px rgba(237, 233, 233, 0.5);
 }
 .head-nav {
@@ -119,7 +119,7 @@ export default {
   border: 1px solid;
 }
 .userinfo-right {
-  width: 320px;
+  // width: 320px;
   padding: 0 10px;
   justify-content: space-between;
 }

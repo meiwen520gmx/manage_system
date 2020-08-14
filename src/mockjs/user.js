@@ -99,28 +99,28 @@ export default {
         userInfo = {
           roles: ["finance"],
           name: "finance",
-          avatar: "",
+          avatar: "https://upload.jianshu.io/users/upload_avatars/13100152/6a2ded73-d0c5-49c8-a9f8-a715029f3b29?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp",
         };
         break;
       case "market":
         userInfo = {
           roles: ["market"],
           name: "market",
-          avatar: "",
+          avatar: "https://profile.csdnimg.cn/9/D/8/1_qq_41999617",
         };
         break;
       case "personManage":
         userInfo = {
           roles: ["personManage"],
           name: "personManage",
-          avatar: "",
+          avatar: "https://profile.csdnimg.cn/3/C/B/3_u013243347",
         };
         break;
       case "technology":
         userInfo = {
           roles: ["technology"],
           name: "technology",
-          avatar: "",
+          avatar: "https://profile.csdnimg.cn/3/2/9/3_greekmrzzj",
         };
         break;
       default:

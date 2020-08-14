@@ -42,7 +42,7 @@ export default {
   data() {
     return {
       param: {
-        username: "admin",
+        username: "boss",
         password: "123",
       },
       rules: {
@@ -63,6 +63,7 @@ export default {
           login(userinfo).then(res => {
             let userInfo = res.data.userInfo;
             setToken("token", userInfo.token);
+            console.log(this.$store)
             this.$router.push({path: "/"});
             this.$store.dispatch('initLeftMenu'); //设置左边菜单始终为展开状态
           }) 

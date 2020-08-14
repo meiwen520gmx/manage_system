@@ -32,8 +32,7 @@
               :index="item.path + '/' + item.children[0].path"
             >
               <icon-svg v-if="item.meta.icon" :icon-class="item.meta.icon" />
-              <span v-if="item.meta.title" slot="title">{{
-                $t(`commons.${item.name}`)
+              <span v-if="item.meta.title" slot="title">{{item.name
               }}</span>
             </el-menu-item>
           </router-link>
@@ -52,8 +51,7 @@
             <template slot="title">
               <icon-svg v-if="item.meta.icon" :icon-class="item.meta.icon" />
               <span v-if="item.meta.title" slot="title">{{
-                $t(`commons.${item.name}`)
-              }}</span>
+                item.name}}</span>
             </template>
             <!--直接定位到子路由上，子路由也可以实现导航功能-->
             <router-link
@@ -65,7 +63,7 @@
                 v-if="citem.meta.routerType != 'topmenu' && citem.meta.title"
                 :index="getIindex(citem, item, cindex)"
               >
-                <span slot="title"> {{ $t(`commons.${citem.name}`) }}</span>
+                <span slot="title"> {{citem.name}}</span>
               </el-menu-item>
             </router-link>
           </el-submenu>
