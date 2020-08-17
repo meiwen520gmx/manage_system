@@ -25,16 +25,13 @@
             <el-submenu index="2" popper-class="infoItem">
               <template slot="title">
                 <div class="welcome">
-                  <span class="name">{{name}}</span>
-                  <!-- <span class="name avatarname">
-                    {{ $t(`commons.${name}`) }}</span
-                  > -->
+                  <span class="name">Hi,{{name}}</span>
                 </div>
                 <img :src="avatar" class="avatar" alt="" />
               </template>
-              <el-menu-item index="2-1" @click="setDialogInfo('info')">个人信息</el-menu-item>
-              <el-menu-item index="2-2" @click="setDialogInfo('pass')">修改信息</el-menu-item>
-              <el-menu-item index="2-3" @click="setDialogInfo('logout')">退出</el-menu-item>
+              <el-menu-item index="2-1" @click="setDialogInfo('info')">个人中心</el-menu-item>
+              <el-menu-item index="2-2" @click="setDialogInfo('pass')">首页</el-menu-item>
+              <el-menu-item index="2-3" @click="setDialogInfo('logout')">退出登录</el-menu-item>
             </el-submenu>
           </el-menu>
         </div>
@@ -148,7 +145,6 @@ export default {
   .name {
     line-height: 20px;
     text-align: center;
-    font-size: 12px;
   }
   .avatarname {
     color: #a9d86e;

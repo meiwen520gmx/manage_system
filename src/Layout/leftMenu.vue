@@ -58,12 +58,12 @@
             <!--直接定位到子路由上，子路由也可以实现导航功能-->
             <router-link
               v-for="(citem, cindex) in item.children"
-              :to="getIindex(citem, item, cindex)"
+              :to="item.path + '/' + citem.path"
               :key="cindex"
             >
               <el-menu-item
                 v-if="citem.meta.title"
-                :index="getIindex(citem, item, cindex)"
+                :index="item.path + '/' + citem.path"
               >
                 <span slot="title"> {{ citem.meta.title }}</span>
               </el-menu-item>
@@ -93,19 +93,11 @@ export default {
   computed: {
     ...mapGetters(["isCollapse", "sidebar", "permission_routers"]),
   },
-  methods: {
-    getIindex(citem, item, cindex) {
-      return citem.meta.titleList
-        ? item.path + "/" + citem.path + "/" + citem.meta.titleList[0].path
-        : item.path + "/" + citem.path;
-    },
-  },
+  methods: {},
 };
 </script>
 
 <style lang="less" scoped>
-@left-bgColor: rgb(48, 65, 86); // 左侧菜单背景颜色;
-@icon-link: #ff6c60;
 .menu_left {
   position: absolute;
   top: 0;
@@ -150,7 +142,8 @@ export default {
   background-color: rgb(48, 65, 86);
 }
 .el-menu-item:hover,
-#menu_page  .el-submenu__title:focus,#menu_page .el-submenu__title:hover {
+#menu_page .el-submenu__title:focus,
+#menu_page .el-submenu__title:hover {
   background-color: #263445 !important;
 }
 </style>

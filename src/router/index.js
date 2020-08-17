@@ -53,6 +53,25 @@ export const constantRouterMap = [
     ],
   },
   {
+    path: "/infoManage",
+    name: "infoManage",
+    component: Layout,
+    meta: {
+      title: "信息管理",
+      icon: "el-icon-s-comment",
+    },
+    children: [
+      {
+        path: "personCenter",
+        meta: {
+          title: "个人中心",
+          icon: "el-icon-s-comment",
+        },
+        component: () => import("@/views/infoManage/personCenter"),
+      },
+    ],
+  },
+  {
     path: "/login",
     name: "Login",
     component: () => import("@/views/Login"),
