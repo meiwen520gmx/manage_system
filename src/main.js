@@ -10,11 +10,6 @@ import { Message } from "element-ui";
 
 Vue.config.productionTip = false;
 
-new Vue({
-  router,
-  store,
-  render: (h) => h(App),
-}).$mount("#app");
 
 function hasPermission(roles, permissionRoles) {
   if (roles.indexOf("boss") >= 0) return true;
@@ -28,12 +23,10 @@ router.beforeEach((to, from, next) => {
     if (to.path === "/login") {
       next({ path: "/" });
     } else {
-      console.log(store.getters.roles.length);
       if (store.getters.roles.length === 0) {
         let token = getToken("token");
         getUserInfo({ token: token })
           .then((res) => {
-            console.log(res);
             // // 根据token拉取用户信息
             let userInfo = res.data.userInfo;
             store.commit("SET_ROLES", userInfo.roles);
@@ -42,37 +35,41 @@ router.beforeEach((to, from, next) => {
             store
               .dispatch("GenerateRoutes", { roles: userInfo.roles })
               .then(() => {
-                console.log(router);
                 // 根据roles权限生成可访问的路由表
                 router.addRoutes(store.getters.addRouters); //动态添加可访问权限路由表
-                console.log(router);
+                next();
                 // next({ ...to, replace: true }); // hack方法 确保addRoutes已完成
               });
           })
           .catch((err) => {
-            // store.dispatch("logOut").then(() => {
-            //   Message.error(err || "验证失败，请重新登录！");
-            //   next({ path: "/login" });
-            // });
+            store.dispatch("logOut").then(() => {
+              Message.error(err || "验证失败，请重新登录！");
+              next({ path: "/" });
+            });
           });
       } else {
         //     // 没有动态改变权限的需求可直接next() 删除下方权限判断 ↓
-        //     if (hasPermission(store.getters.roles, to.meta.roles)) {
-        //       next();
-        //     } else {
-        //       Message.error("401");
-        //       // next({ path: "/login" });
-        //       // next({ path: '/401', replace: true, query: { noGoBack: true }})
-        //     }
+        if (hasPermission(store.getters.roles, to.meta.roles)) {
+          next();
+        } else {
+          next({ path: '/401', replace: true, query: { noGoBack: true }})
+        }
       }
     }
   } else {
     next();
-    // if (whiteList.indexOf(to.path) !== -1) {
-    //   // 点击退出时,会定位到这里
-    //   next();
-    // } else {
-    //   next("/login");
-    // }
+    if (whiteList.indexOf(to.path) !== -1) {
+      // 点击退出时,会定位到这里
+      next();
+    } else {
+      next("/login");
+    }
   }
 });
+
+new Vue({
+  router,
+  store,
+  render: (h) => h(App),
+}).$mount("#app");
+//在使用 vue-router 模块时，挂载根实例的步骤要放在最后，不然会导致配置不成功

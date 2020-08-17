@@ -63,9 +63,8 @@ export default {
           login(userinfo).then(res => {
             let userInfo = res.data.userInfo;
             setToken("token", userInfo.token);
-            console.log(this.$store)
-            this.$router.push({path: "/"});
             this.$store.dispatch('initLeftMenu'); //设置左边菜单始终为展开状态
+            this.$router.push({path: "/"});
           }) 
         } else {
           this.$message.error("请输入账号和密码");

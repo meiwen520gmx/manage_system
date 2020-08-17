@@ -6,9 +6,9 @@
         :src="logo"
         alt="company"
       />
-      <span class="title" v-show="sidebar.opened">Hi<i>Admin</i></span>
+      <span class="title" v-show="sidebar.opened">company</span>
     </div>
-    <div class="menu_page_bottom is-scroll-left">
+    <div class="menu_page_bottom is-scroll-left" id="menu_page">
       <el-menu
         mode="vertical"
         theme="dark"
@@ -31,8 +31,9 @@
               class="dropItem"
               :index="item.path + '/' + item.children[0].path"
             >
-              <icon-svg v-if="item.meta.icon" :icon-class="item.meta.icon" />
-              <span v-if="item.meta.title" slot="title">{{item.name
+              <i v-if="item.meta.icon" :class="item.meta.icon"></i>
+              <span v-if="item.meta.title" slot="title">{{
+                item.meta.title
               }}</span>
             </el-menu-item>
           </router-link>
@@ -49,9 +50,10 @@
             :key="index"
           >
             <template slot="title">
-              <icon-svg v-if="item.meta.icon" :icon-class="item.meta.icon" />
+              <i v-if="item.meta.icon" :class="item.meta.icon"></i>
               <span v-if="item.meta.title" slot="title">{{
-                item.name}}</span>
+                item.meta.title
+              }}</span>
             </template>
             <!--直接定位到子路由上，子路由也可以实现导航功能-->
             <router-link
@@ -60,10 +62,10 @@
               :key="cindex"
             >
               <el-menu-item
-                v-if="citem.meta.routerType != 'topmenu' && citem.meta.title"
+                v-if="citem.meta.title"
                 :index="getIindex(citem, item, cindex)"
               >
-                <span slot="title"> {{citem.name}}</span>
+                <span slot="title"> {{ citem.meta.title }}</span>
               </el-menu-item>
             </router-link>
           </el-submenu>
@@ -81,9 +83,9 @@ export default {
   data() {
     return {
       menuObj: {
-        bgColor: "#fff",
-        textColor: "#666",
-        activeTextColor: "#ff6428",
+        bgColor: "rgb(48, 65, 86)",
+        textColor: "rgb(191, 203, 217)",
+        activeTextColor: "rgb(64, 158, 255)",
       },
       logo: logoImg,
     };
@@ -102,7 +104,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@left-bgColor: #fff; // 左侧菜单背景颜色;
+@left-bgColor: rgb(48, 65, 86); // 左侧菜单背景颜色;
 @icon-link: #ff6c60;
 .menu_left {
   position: absolute;
@@ -117,7 +119,9 @@ export default {
   justify-content: space-around;
   text-transform: uppercase;
   box-sizing: border-box;
-  box-shadow: 0px 2px 5px 0px rgba(230, 224, 224, 0.5);
+  box-shadow: 0px 2px 5px 0px rgba(230, 224, 224, 0.2);
+  background-color: rgb(48, 65, 86);
+  color: #fff;
   .logo {
     height: 36px;
     width: 36px;
@@ -140,8 +144,13 @@ export default {
   overflow-y: scroll;
   overflow-x: hidden;
   flex: 1;
-  margin-top: 3px;
+  // margin-top: 3px;
   z-index: 10;
   box-shadow: 0 0 10px 0 rgba(230, 224, 224, 0.5);
+  background-color: rgb(48, 65, 86);
+}
+.el-menu-item:hover,
+#menu_page  .el-submenu__title:focus,#menu_page .el-submenu__title:hover {
+  background-color: #263445 !important;
 }
 </style>

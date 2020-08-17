@@ -18,7 +18,7 @@ export const constantRouterMap = [
     component: Layout,
     meta: {
       title: "首页",
-      icon: "icondashboard",
+      icon: "el-icon-s-home",
     },
     noDropdown: true,
     children: [
@@ -26,7 +26,7 @@ export const constantRouterMap = [
         path: "index",
         meta: {
           title: "首页",
-          icon: "icondashboard",
+          icon: "el-icon-s-home",
         },
         component: () => import("@/views/index/index"),
       },
@@ -38,7 +38,7 @@ export const constantRouterMap = [
     component: Layout,
     meta: {
       title: "公司公告",
-      icon: "icondashboard",
+      icon: "el-icon-s-comment",
     },
     noDropdown: true,
     children: [
@@ -46,7 +46,7 @@ export const constantRouterMap = [
         path: "companyNotice",
         meta: {
           title: "公司公告",
-          icon: "icondashboard",
+          icon: "el-icon-s-comment",
         },
         component: () => import("@/views/notice/CompanyNotice"),
       },
@@ -62,6 +62,16 @@ export const constantRouterMap = [
     path: "/register",
     name: "Register",
     component: () => import("@/views/Register"),
+    hidden: true,
+  },
+  {
+    path: "/404",
+    component: () => import("@/views/errorPage/404"),
+    hidden: true,
+  },
+  {
+    path: "/401",
+    component: () => import("@/views/errorPage/401"),
     hidden: true,
   },
   // {
@@ -89,7 +99,7 @@ export const asyncRouterMap = [
     component: Layout,
     meta: {
       title: "财务管理",
-      icon: "iconuser",
+      icon: "el-icon-s-data",
       roles: ['boss', 'finance']
     },
     children:[
@@ -128,7 +138,7 @@ export const asyncRouterMap = [
     component: Layout,
     meta: {
       title: "市场管理",
-      icon: "iconuser",
+      icon: "el-icon-s-grid",
       roles: ['boss', 'market']
     },
     children:[
@@ -158,7 +168,7 @@ export const asyncRouterMap = [
     component: Layout,
     meta: {
       title: "员工管理",
-      icon: "iconuser",
+      icon: "el-icon-s-custom",
       roles: ['boss', 'personManage']
     },
     noDropdown:true,
@@ -180,7 +190,7 @@ export const asyncRouterMap = [
     component: Layout,
     meta: {
       title: "项目管理",
-      icon: "iconuser",
+      icon: "el-icon-s-cooperation",
       roles: ['boss', 'technology']
     },
     noDropdown:true,
