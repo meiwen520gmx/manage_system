@@ -4,6 +4,7 @@ import router from "./router";
 import store from "./store";
 import "./plugins/element.js";
 import "@/mockjs";
+import NProgress from "nprogress";//progress进度条
 import { getToken } from "./common/auth";
 import { getUserInfo } from "./network/api/user";
 import { Message } from "element-ui";
@@ -19,10 +20,12 @@ function hasPermission(roles, permissionRoles) {
 }
 const whiteList = ["/login"]; // 不重定向白名单
 router.beforeEach((to, from, next) => {
+  NProgress.start()
   // 点击登录时，拿到了token并存入了cookie,保证页面刷新时,始终可以拿到token
   if (getToken("token")) {
     if (to.path === "/login") {
       next({ path: "/" });
+      NProgress.done() 
     } else {
       if (store.getters.roles.length === 0) {
         let token = getToken("token");
@@ -63,9 +66,14 @@ router.beforeEach((to, from, next) => {
       next();
     } else {
       next("/login");
+      NProgress.done()
     }
   }
 });
+
+router.afterEach(() => {
+  NProgress.done()//结束进度条
+})
 
 new Vue({
   router,
