@@ -12,8 +12,9 @@ Vue.config.productionTip = false;
 
 
 function hasPermission(roles, permissionRoles) {
-  if (roles.indexOf("boss") >= 0) return true;
-  if (!permissionRoles) return true;
+  console.log(222)
+  if (roles.indexOf("boss") >= 0) return true;//如果是boss那么所有权限都有，所以返回true
+  if (!permissionRoles) return true;//不是动态路由也就是默认路由，直接放过，所以返回true
   return roles.some((role) => permissionRoles.indexOf(role) >= 0);
 }
 const whiteList = ["/login"]; // 不重定向白名单
@@ -27,7 +28,7 @@ router.beforeEach((to, from, next) => {
         let token = getToken("token");
         getUserInfo({ token: token })
           .then((res) => {
-            // // 根据token拉取用户信息
+            //根据token拉取用户信息
             let userInfo = res.data.userInfo;
             store.commit("SET_ROLES", userInfo.roles);
             store.commit("SET_NAME", userInfo.name);
@@ -37,8 +38,8 @@ router.beforeEach((to, from, next) => {
               .then(() => {
                 // 根据roles权限生成可访问的路由表
                 router.addRoutes(store.getters.addRouters); //动态添加可访问权限路由表
-                next();
-                // next({ ...to, replace: true }); // hack方法 确保addRoutes已完成
+                // next();
+                next({ ...to, replace: true }); // hack方法 确保addRoutes已完成
               });
           })
           .catch((err) => {
@@ -48,7 +49,7 @@ router.beforeEach((to, from, next) => {
             });
           });
       } else {
-        //     // 没有动态改变权限的需求可直接next() 删除下方权限判断 ↓
+        // 没有动态改变权限的需求可直接next() 删除下方权限判断 ↓
         if (hasPermission(store.getters.roles, to.meta.roles)) {
           next();
         } else {
@@ -57,7 +58,6 @@ router.beforeEach((to, from, next) => {
       }
     }
   } else {
-    next();
     if (whiteList.indexOf(to.path) !== -1) {
       // 点击退出时,会定位到这里
       next();

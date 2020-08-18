@@ -27,12 +27,8 @@ export default {
       let temp = [],
         temps = [];
       this.$route.matched.filter((item, index, self) => {
-        // if(item.meta.title){
-        // 	const title = item.meta.title;
-        //     temp.push(title);
-        // }
-        if (item.name) {
-          const name = item.name;
+        if (item.meta.title) {
+          const name = item.meta.title;
           temp.push(name);
         }
       });
@@ -47,9 +43,8 @@ export default {
   mounted() {},
   methods: {
     handleLefeMenu() {
-      console.log(this.$store.dispatch.menu)
-      // this.$store.dispatch("setLeftCollapse"); // 折叠菜单
-      // this.$store.dispatch("handleLeftMenu"); // 改变菜单宽度 180->35/35-180
+      this.$store.dispatch("setLeftCollapse"); // 折叠菜单
+      this.$store.dispatch("handleLeftMenu"); // 改变菜单宽度 180->35/35-180
       this.changeBarDirection = !this.changeBarDirection;
     },
   },

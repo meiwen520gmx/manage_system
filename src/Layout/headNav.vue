@@ -25,13 +25,19 @@
             <el-submenu index="2" popper-class="infoItem">
               <template slot="title">
                 <div class="welcome">
-                  <span class="name">Hi,{{name}}</span>
+                  <span class="name">Hi,{{ name }}</span>
                 </div>
                 <img :src="avatar" class="avatar" alt="" />
               </template>
-              <el-menu-item index="2-1" @click="setDialogInfo('info')">个人中心</el-menu-item>
-              <el-menu-item index="2-2" @click="setDialogInfo('pass')">首页</el-menu-item>
-              <el-menu-item index="2-3" @click="setDialogInfo('logout')">退出登录</el-menu-item>
+              <el-menu-item index="2-1" @click="handleTopMenu('info')"
+                >个人中心</el-menu-item
+              >
+              <el-menu-item index="2-2" @click="handleTopMenu('index')"
+                >首页</el-menu-item
+              >
+              <el-menu-item index="2-3" @click="handleTopMenu('logout')"
+                >退出登录</el-menu-item
+              >
             </el-submenu>
           </el-menu>
         </div>
@@ -62,27 +68,27 @@ export default {
   },
   methods: {
     logout() {
-      this.$store.dispatch("LogOut").then(() => {
-        location.reload();
+      this.$store.dispatch("logOut").then(() => {
+        location.reload(); // 为了重新实例化vue-router对象 避免bug
       });
     },
     /**
-     * 弹出框-修改密码或者系统设置
-     * @param {string} cmditem 弹框类型
+     * 个人中心，首页，退出登录
+     * @param {string} params 类型
      */
-    setDialogInfo(cmditem) {
-      // switch (cmditem) {
-      //   case "info":
-      //     this.$router.push("/infoManage/infoShow/infoShow1");
-      //     break;
-      //   case "pass":
-      //     this.$router.push("/infoManage/infoModify/infoModify1");
-      //     break;
-      //   case "logout":
-      //     this.logout();
-      //     break;
-      // }
-    }
+    handleTopMenu(params) {
+      switch (params) {
+        case "info":
+          this.$router.push("/infoManage/personCenter");
+          break;
+        case "index":
+          this.$router.push("/index/index");
+          break;
+        case "logout":
+          this.logout();
+          break;
+      }
+    },
   },
 };
 </script>

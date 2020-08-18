@@ -1,0 +1,22 @@
+//覆盖一些element-ui的样式
+
+// 设置左侧菜单栏
+.el-menu {
+  border: none;
+  height: 100%;
+  .dropItem{
+    padding: 0 6px !important;
+    .svg-icon{
+      margin-right: 5px;
+    }
+  }
+  .el-tooltip,
+  .el-submenu__title{
+     padding: 0 6px !important;
+  }
+}
+
+#menu_page .el-menu-item:hover,
+#menu_page  .el-submenu__title:focus,#menu_page .el-submenu__title:hover {
+  background-color: #263445 !important;
+}

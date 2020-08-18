@@ -1,5 +1,5 @@
 import Vue from "vue";
-import { Button, Form, FormItem, Input,Icon,Message,Menu,MenuItem,Submenu, Breadcrumb,BreadcrumbItem } from "element-ui";
+import { Button, Form, FormItem, Input,Icon,Message,Menu,MenuItem,Submenu,Breadcrumb,BreadcrumbItem,Tooltip } from "element-ui";
 
 Vue.use(Button);
 Vue.use(Form);
@@ -11,6 +11,7 @@ Vue.use(MenuItem);
 Vue.use(Submenu);
 Vue.use(Breadcrumb);
 Vue.use(BreadcrumbItem);
+Vue.use(Tooltip);
 
 Vue.prototype.$message = Message;
 

@@ -23,8 +23,8 @@ const user = {
   },
   actions: {
     //退出登录
-    logOut({ commit, reqData }) {
-      return new Promise((resolve, reject) => {
+    logOut({ commit }, reqData) {
+      return new Promise((resolve) => {
         logout(reqData).then((res) => {
           commit("SET_ROLES", []);
           removeToken("token");

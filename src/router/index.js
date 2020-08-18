@@ -58,14 +58,13 @@ export const constantRouterMap = [
     component: Layout,
     meta: {
       title: "信息管理",
-      icon: "el-icon-s-comment",
+      icon: "el-icon-warning-outline",
     },
     children: [
       {
         path: "personCenter",
         meta: {
-          title: "个人中心",
-          icon: "el-icon-s-comment",
+          title: "个人中心"
         },
         component: () => import("@/views/infoManage/personCenter"),
       },

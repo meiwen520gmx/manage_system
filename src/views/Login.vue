@@ -62,7 +62,7 @@ export default {
           let userinfo = this.param;
           login(userinfo).then(res => {
             let userInfo = res.data.userInfo;
-            setToken("token", userInfo.token);
+            setToken("token", userInfo.token);//把token保存在cookies中，以防止页面刷新vuex信息清空，页面刷新，根据本地cookies中的token再次去请求用户信息
             this.$store.dispatch('initLeftMenu'); //设置左边菜单始终为展开状态
             this.$router.push({path: "/"});
           }) 
