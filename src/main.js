@@ -13,7 +13,6 @@ Vue.config.productionTip = false;
 
 
 function hasPermission(roles, permissionRoles) {
-  console.log(222)
   if (roles.indexOf("boss") >= 0) return true;//如果是boss那么所有权限都有，所以返回true
   if (!permissionRoles) return true;//不是动态路由也就是默认路由，直接放过，所以返回true
   return roles.some((role) => permissionRoles.indexOf(role) >= 0);

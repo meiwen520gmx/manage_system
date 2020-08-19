@@ -16,6 +16,7 @@ export const constantRouterMap = [
     path: "/index",
     name: "index",
     component: Layout,
+    redirect: "/index/index",
     meta: {
       title: "首页",
       icon: "el-icon-s-home",
@@ -36,6 +37,7 @@ export const constantRouterMap = [
     path: "/notice",
     name: "notice",
     component: Layout,
+    redirect: '/notice/companyNotice',
     meta: {
       title: "公司公告",
       icon: "el-icon-s-comment",
@@ -56,6 +58,7 @@ export const constantRouterMap = [
     path: "/infoManage",
     name: "infoManage",
     component: Layout,
+    redirect: '/infoManage/personCenter',
     meta: {
       title: "信息管理",
       icon: "el-icon-warning-outline",
