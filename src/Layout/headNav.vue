@@ -95,11 +95,10 @@ export default {
 
 <style scoped lang="less">
 .right-nav {
-  display: flex;
+  .fj(flex-end, flex-start);
   flex: 1;
   width: calc(100% - 180px);
   padding-right: 15px;
-  justify-content: flex-end;
   box-shadow: 0px 2px 5px 0px rgba(237, 233, 233, 0.5);
 }
 .head-nav {
@@ -131,15 +130,13 @@ export default {
   text-align: right;
 }
 .avatar {
-  width: 32px;
-  height: 32px;
+  .wh(32px, 32px);
   border-radius: 50%;
   vertical-align: middle;
   display: inline-block;
 }
 .langAvatar {
-  width: 24px;
-  height: 24px;
+  .wh(24px, 24px);
   border-radius: 50%;
   vertical-align: middle;
   display: inline-block;
@@ -153,9 +150,8 @@ export default {
     text-align: center;
   }
   .avatarname {
-    color: #a9d86e;
     font-weight: bolder;
-    font-size: 13px;
+    .sc(13px, #a9d86e);
   }
 }
 

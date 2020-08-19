@@ -105,24 +105,20 @@ export default {
   bottom: 0;
 }
 .menu_page_top {
-  width: 100%;
-  height: 60px;
-  align-items: center;
-  justify-content: space-around;
+	.wh(100%, 60px);
+	.fj(space-around, center);
   text-transform: uppercase;
   box-sizing: border-box;
   box-shadow: 0px 2px 5px 0px rgba(230, 224, 224, 0.2);
   background-color: rgb(48, 65, 86);
   color: #fff;
   .logo {
-    height: 36px;
-    width: 36px;
+    .wh(36px, 36px);
     vertical-align: middle;
     display: inline-block;
   }
   .closeLogo {
-    width: 30px;
-    height: 30px;
+   .wh(30px, 30px);
   }
   .title {
     font-size: 22px;

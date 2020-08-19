@@ -9,4 +9,5 @@
 @import "./assets/css/common.less";
 @import "./assets/css/scrollBar.less";
 @import './assets/css/elementUI.less';
+@import './assets/css/transition.less';
 </style>

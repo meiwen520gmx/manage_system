@@ -60,12 +60,12 @@ export default {
       this.$refs.login.validate((valid) => {
         if (valid) {
           let userinfo = this.param;
-          login(userinfo).then(res => {
+          login(userinfo).then((res) => {
             let userInfo = res.data.userInfo;
-            setToken("token", userInfo.token);//把token保存在cookies中，以防止页面刷新vuex信息清空，页面刷新，根据本地cookies中的token再次去请求用户信息
-            this.$store.dispatch('initLeftMenu'); //设置左边菜单始终为展开状态
-            this.$router.push({path: "/"});
-          }) 
+            setToken("token", userInfo.token); //把token保存在cookies中，以防止页面刷新vuex信息清空，页面刷新，根据本地cookies中的token再次去请求用户信息
+            this.$store.dispatch("initLeftMenu"); //设置左边菜单始终为展开状态
+            this.$router.push({ path: "/" });
+          });
         } else {
           this.$message.error("请输入账号和密码");
           console.log("error submit!!");
@@ -84,15 +84,13 @@ export default {
 <style lang="less" scoped>
 .login {
   position: relative;
-  height: 100%;
-  width: 100%;
+  .wh(100%, 100%);
   background-image: url("../assets/imgs/bg.jpg");
   background-repeat: no-repeat;
   .fj(center);
 }
 .login-box {
-  width: 350px;
-  height: 300px;
+  .wh(350px, 300px);
   position: absolute;
   background-color: #00000068;
   padding: 20px;

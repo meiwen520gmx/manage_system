@@ -47,14 +47,16 @@ export default {
       param: {
         username: "admin",
         password: "123",
-        telphone: "123123123132"
+        telphone: "123123123132",
       },
       rules: {
         username: [
           { required: true, message: "请输入用户名", trigger: "blur" },
         ],
         password: [{ required: true, message: "请输入密码", trigger: "blur" }],
-        telphone: [{ required: true, message: "请输入电话号码", trigger: "blur" }],
+        telphone: [
+          { required: true, message: "请输入电话号码", trigger: "blur" },
+        ],
       },
     };
   },
@@ -82,15 +84,13 @@ export default {
 <style lang="less" scoped>
 .register {
   position: relative;
-  height: 100%;
-  width: 100%;
+  .wh(100%, 100%);
   background-image: url("../assets/imgs/bg.jpg");
   background-repeat: no-repeat;
   .fj(center);
 }
 .register-box {
-  width: 350px;
-  height: 400px;
+  .wh(350px, 400px);
   position: absolute;
   background-color: #00000068;
   padding: 20px;
