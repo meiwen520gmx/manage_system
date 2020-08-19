@@ -37,7 +37,6 @@ export default {
           temps.push(item);
         }
       });
-      console.log(this.$route)
       return temps;
     },
   },

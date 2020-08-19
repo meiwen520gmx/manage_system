@@ -60,10 +60,12 @@ router.beforeEach((to, from, next) => {
       }
     }
   } else {
+		//用户未登录
     if (whiteList.indexOf(to.path) !== -1) {
-      // 点击退出时,会定位到这里
+      // 需要跳转的路由是否是whiteList中的路由，若是，则直接跳转
       next();
     } else {
+			// 需要跳转的路由不是whiteList中的路由，则直接跳转登录页
       next("/login");
       NProgress.done()
     }

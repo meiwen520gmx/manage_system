@@ -29,7 +29,7 @@
         <div class="login-btn">
           <el-button type="primary" @click="submitForm()">登录</el-button>
         </div>
-        <p class="login-tips" @click="register">没有账号？立即注册</p>
+        <!-- <p class="login-tips" @click="register">没有账号？立即注册</p> -->
       </el-form>
     </div>
   </div>
