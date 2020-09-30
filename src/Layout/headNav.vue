@@ -1,14 +1,13 @@
 <template>
-  <header
-    class="head-nav rflex "
-    :style="{ width: headNavWidth + 'px' }"
-    id="header_container"
-  >
-    <div class="right-nav" ref="rightNav">
-      <div class="userinfo-right">
-        <div class="userinfo">
-          <el-menu class="el-menu-demo" mode="horizontal">
-            <!-- <el-submenu index="1" popper-class="langItem">
+  <header class="head-nav">
+    <span class="collapse">
+      <i class="collapse-icon el-icon-s-unfold"></i>
+    </span>
+    <!-- :style="{ width: headNavWidth + 'px' }" -->
+    <div class="right-nav">
+      <div class="userinfo">
+        <el-menu class="el-menu-demo" mode="horizontal">
+          <!-- <el-submenu index="1" popper-class="langItem">
                             <template slot="title">
                                 <img :src="langLogo" class='langAvatar' alt="">
                             </template>
@@ -21,26 +20,24 @@
                                 <span class="intro">EngList</span>
                             </el-menu-item>
                         </el-submenu> -->
-
-            <el-submenu index="2" popper-class="infoItem">
-              <template slot="title">
-                <div class="welcome">
-                  <span class="name">Hi,{{ name }}</span>
-                </div>
-                <img :src="avatar" class="avatar" alt="" />
-              </template>
-              <el-menu-item index="2-1" @click="handleTopMenu('info')"
-                >个人中心</el-menu-item
-              >
-              <el-menu-item index="2-2" @click="handleTopMenu('index')"
-                >首页</el-menu-item
-              >
-              <el-menu-item index="2-3" @click="handleTopMenu('logout')"
-                >退出登录</el-menu-item
-              >
-            </el-submenu>
-          </el-menu>
-        </div>
+          <el-submenu index="2" popper-class="infoItem">
+            <template slot="title">
+              <div class="welcome">
+                <span class="name">Hi,{{ name }}</span>
+              </div>
+              <img :src="avatar" class="avatar" alt="" />
+            </template>
+            <el-menu-item index="2-1" @click="handleTopMenu('info')"
+              >个人中心</el-menu-item
+            >
+            <el-menu-item index="2-2" @click="handleTopMenu('index')"
+              >首页</el-menu-item
+            >
+            <el-menu-item index="2-3" @click="handleTopMenu('logout')"
+              >退出登录</el-menu-item
+            >
+          </el-submenu>
+        </el-menu>
       </div>
     </div>
   </header>
@@ -94,40 +91,31 @@ export default {
 </script>
 
 <style scoped lang="less">
-.right-nav {
-  .fj(flex-end, flex-start);
-  flex: 1;
-  width: calc(100% - 180px);
-  padding-right: 15px;
-  box-shadow: 0px 2px 5px 0px rgba(237, 233, 233, 0.5);
-}
+
 .head-nav {
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 29;
-  transition: width 0.2s;
-  justify-content: space-between;
-  height: 60px;
-  box-sizing: border-box;
-  background: #fff;
+  padding: 0 20px;
+  .fj(space-between, center);
   .logout {
     vertical-align: middle;
     cursor: pointer;
   }
 }
+.collapse{
+  cursor: pointer;
+  margin-left: -15px;
+  .collapse-icon{
+    font-size: 25px;
+  }
+}
+.right-nav {
+  .fj(flex-end, flex-start);
+}
 .middle {
   align-items: center;
   border: 1px solid;
 }
-.userinfo-right {
-  // width: 320px;
-  padding: 0 10px;
-  justify-content: space-between;
-}
 .userinfo {
-  line-height: 60px;
-  text-align: right;
+  padding: 0 10px;
 }
 .avatar {
   .wh(32px, 32px);
@@ -135,12 +123,12 @@ export default {
   vertical-align: middle;
   display: inline-block;
 }
-.langAvatar {
-  .wh(24px, 24px);
-  border-radius: 50%;
-  vertical-align: middle;
-  display: inline-block;
-}
+// .langAvatar {
+//   .wh(24px, 24px);
+//   border-radius: 50%;
+//   vertical-align: middle;
+//   display: inline-block;
+// }
 .welcome {
   display: inline-block;
   vertical-align: middle;
@@ -149,17 +137,13 @@ export default {
     line-height: 20px;
     text-align: center;
   }
-  .avatarname {
-    font-weight: bolder;
-    .sc(13px, #a9d86e);
-  }
+  // .avatarname {
+  //   font-weight: bolder;
+  //   .sc(13px, #a9d86e);
+  // }
 }
-
 .username {
   cursor: pointer;
   margin-right: 5px;
-}
-.border {
-  border: 1px solid;
 }
 </style>

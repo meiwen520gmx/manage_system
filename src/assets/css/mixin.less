@@ -1,3 +1,12 @@
+
+@import "./normalize.less";
+@import "./transition.less";
+
+
+body{
+	background-color: #001529;
+}
+
 // 背景图片地址和大小
 .bg(@url) {
   background-image: url(@url);
@@ -41,10 +50,10 @@
 .tb {
   position: absolute;
   top: 50%;
-  -webkit-transform: translate(-50%);
-  -moz-transform: translate(-50%);
-  -ms-transform: translate(-50%);
-  -o-transform: translate(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
   transform: translateY(-50%);
 }
 
@@ -52,10 +61,10 @@
 .lr {
   position: absolute;
   left: 50%;
-  -webkit-transform: translate(-50%);
-  -moz-transform: translate(-50%);
-  -ms-transform: translate(-50%);
-  -o-transform: translate(-50%);
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
   transform: translateX(-50%);
 }
 
@@ -77,14 +86,61 @@
   color: @color;
 }
 
-//flex 布局和 子元素 对其方式
+// flex 布局和 子元素 对其方式
 .fj(@type: space-between,@align: center) {
-  display: -webkit-flex; //低版本的chrome
-  display: -moz-flex; //低版本的firefox
-  display: -ms-flex; //IE10
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
   display: flex;
   -webkit-justify-content: @type;
+  -moz-box-pack: @type;
+  -ms-flex-pack: @type;
   justify-content: @type;
   -webkit-align-items: @align;
+  -moz-box-align: @align;
+  -ms-flex-align: @align;
   align-items: @align;
+}
+
+//横向弹性布局
+.rflex {
+  display: -webkit-flex; // 低版本的chrome
+  display: -moz-flex; // 低版本的firefox
+  display: -ms-flex; // IE10
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -moz-box-orient: horizontal;
+  -moz-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+//纵向弹性布局
+.cflex {
+  display: -webkit-flex; // 低版本的chrome
+  display: -moz-flex; // 低版本的firefox
+  display: -ms-flex; // IE10
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -moz-box-orient: vertical;
+  -moz-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.wflex {
+  -webkit-flex: 1;
+  -moz-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.webkit(@attr, @value){
+  -webkit-@{attr}: @value;
+  -moz-@{attr}: @value;
+  -ms-@{attr}: @value;
+  -o-@{attr}: @value;
+  @{attr}: @value;
 }

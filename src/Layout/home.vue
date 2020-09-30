@@ -1,22 +1,18 @@
 <template>
-  <div class="home rflex">
-    <left-menu></left-menu>
-    <div
-      class="menu_right wflex el-scrollbar"
-      ref="menu_right"
-      :style="{ left: sidebar.width + 'px' }"
-    >
-      <head-nav></head-nav>
-      <div class="menu_content" ref="menu_content">
-        <bread></bread>
+  <el-container class="layout-wrap">
+    <el-aside width="200px" class="layout-aside"><left-menu /></el-aside>
+    <el-container>
+      <el-header class="layout-header">
+        <head-nav />
+      </el-header>
+      <bread></bread>
+      <el-main class="layout-main">
         <transition name="fade-transform" mode="out-in">
-          <router-view></router-view
-          ><!--页面渲染入口-->
+          <router-view></router-view>
         </transition>
-      </div>
-      <!-- <footerNav></footerNav> -->
-    </div>
-  </div>
+      </el-main>
+    </el-container>
+  </el-container>
 </template>
 
 <script>
@@ -43,21 +39,19 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.home {
-  .menu_right {
-    overflow: auto;
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background: #f6f7fc;
-    .menu_content {
-      position: relative;
-      width: 100%;
-      height: calc(100% - 60px);
-      margin-top: 60px;
-      background: #f0f2f5;
-    }
-  }
+.layout-wrap {
+  height: 100vh;
+}
+.layout-header{
+  position: relative;
+  z-index: 2;
+  height: 75px;
+  background-color: #fff;
+  .webkit(box-shadow,0 3px 16px 0 rgba(0,0,0,.1));
+}
+.layout-main{
+  border: 25px solid #f7f7f7;
+  background-color: #fff;
+  overflow-x: hidden;//去掉由transform动画导致的横向滚动条
 }
 </style>

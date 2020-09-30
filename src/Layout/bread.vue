@@ -1,11 +1,11 @@
 <template>
-  <div class="bread_container" id="bread_container">
-    <span @click="handleLefeMenu" class="bars">
+  <div class="bread_container">
+    <!-- <span @click="handleLefeMenu" class="bars">
       <i
         class="icon-fold"
         :class="changeBarDirection ? 'el-icon-s-unfold' : 'el-icon-s-fold'"
       ></i>
-    </span>
+    </span> -->
     <el-breadcrumb class="breadcrumb" separator="/">
       <el-breadcrumb-item v-for="(name, index) in matchedArr" :key="index">
         {{ name }}
@@ -42,11 +42,11 @@ export default {
   },
   mounted() {},
   methods: {
-    handleLefeMenu() {
-      this.$store.dispatch("setLeftCollapse"); // 折叠菜单
-      this.$store.dispatch("handleLeftMenu"); // 改变菜单宽度 180->35/35-180
-      this.changeBarDirection = !this.changeBarDirection;
-    },
+    // handleLefeMenu() {
+    //   this.$store.dispatch("setLeftCollapse"); // 折叠菜单
+    //   this.$store.dispatch("handleLeftMenu"); // 改变菜单宽度 180->35/35-180
+    //   this.changeBarDirection = !this.changeBarDirection;
+    // },
   },
   watch: {},
 };
@@ -55,22 +55,7 @@ export default {
 <style lang="less">
 .bread_container {
   background-color: #eaebec;
-  width: 100%;
-  .bars {
-    float: left;
-    margin: 4px 10px;
-    cursor: pointer;
-    .icon-fold{
-      font-size: 25px;
-    }
-    // .isactive {
-    //   -webkit-transform: rotate(90deg);
-    //   transform: rotate(90deg);
-    //   transition: 0.38s;
-    //   -webkit-transform-origin: 50% 50%;
-    //   transform-origin: 50% 50%;
-    // }
-  }
+  padding: 0 25px;
   .breadcrumb {
     height: 30px;
     line-height: 30px;

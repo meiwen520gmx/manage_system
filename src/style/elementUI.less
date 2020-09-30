@@ -1,0 +1,19 @@
+//覆盖一些element-ui的样式
+
+// 设置左侧菜单栏
+.el-menu {
+  border-right: 0 !important;
+  .dropItem{
+    .svg-icon{
+      margin-right: 5px;
+    }
+  }
+}
+//消除滚动条
+.el-aside{
+  overflow: hidden !important;
+}
+//消除子菜单超出的部分
+.el-submenu .el-menu-item{
+  min-width: 0 !important;
+}

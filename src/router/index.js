@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import { Layout, Content } from "../Layout"; //页面整体布局
+import { Home, Content } from "../Layout"; //页面整体布局
 
 Vue.use(VueRouter);
 
@@ -8,14 +8,14 @@ Vue.use(VueRouter);
 export const constantRouterMap = [
   {
     path: "",
-    component: Layout,
+    component: Home,
     redirect: "/index/index",
     hidden: true,
   },
   {
     path: "/index",
     name: "index",
-    component: Layout,
+    component: Home,
     redirect: "/index/index",
     meta: {
       title: "首页",
@@ -36,7 +36,7 @@ export const constantRouterMap = [
   {
     path: "/notice",
     name: "notice",
-    component: Layout,
+    component: Home,
     redirect: '/notice/companyNotice',
     meta: {
       title: "公司公告",
@@ -57,7 +57,7 @@ export const constantRouterMap = [
   {
     path: "/infoManage",
     name: "infoManage",
-    component: Layout,
+    component: Home,
     redirect: '/infoManage/personCenter',
     meta: {
       title: "信息管理",
@@ -117,7 +117,7 @@ export const asyncRouterMap = [
   {
     path: "/finance",
     name: "finance",
-    component: Layout,
+    component: Home,
     meta: {
       title: "财务管理",
       icon: "el-icon-s-data",
@@ -156,7 +156,7 @@ export const asyncRouterMap = [
   {
     path: "/market",
     name: "market",
-    component: Layout,
+    component: Home,
     meta: {
       title: "市场管理",
       icon: "el-icon-s-grid",
@@ -186,7 +186,7 @@ export const asyncRouterMap = [
   {
     path: "/personManage",
     name: "personManage",
-    component: Layout,
+    component: Home,
     meta: {
       title: "员工管理",
       icon: "el-icon-s-custom",
@@ -208,7 +208,7 @@ export const asyncRouterMap = [
   {
     path: "/technology",
     name: "technology",
-    component: Layout,
+    component: Home,
     meta: {
       title: "项目管理",
       icon: "el-icon-s-cooperation",
