@@ -17,11 +17,11 @@ export const constantRouterMap = [
     name: "index",
     component: Home,
     redirect: "/index/index",
+    noDropdown: true,
     meta: {
       title: "首页",
       icon: "el-icon-s-home",
     },
-    noDropdown: true,
     children: [
       {
         path: "index",
@@ -37,12 +37,12 @@ export const constantRouterMap = [
     path: "/notice",
     name: "notice",
     component: Home,
-    redirect: '/notice/companyNotice',
+    redirect: "/notice/companyNotice",
+    noDropdown: true,
     meta: {
       title: "公司公告",
       icon: "el-icon-s-comment",
     },
-    noDropdown: true,
     children: [
       {
         path: "companyNotice",
@@ -58,7 +58,7 @@ export const constantRouterMap = [
     path: "/infoManage",
     name: "infoManage",
     component: Home,
-    redirect: '/infoManage/personCenter',
+    redirect: "/infoManage/personCenter",
     meta: {
       title: "信息管理",
       icon: "el-icon-warning-outline",
@@ -67,9 +67,19 @@ export const constantRouterMap = [
       {
         path: "personCenter",
         meta: {
-          title: "个人中心"
+          title: "个人中心",
         },
         component: () => import("@/views/infoManage/personCenter"),
+        children: [
+          {
+            path: "companyNotice",
+            meta: {
+              title: "公司公告",
+              icon: "el-icon-s-comment",
+            },
+            component: () => import("@/views/notice/CompanyNotice"),
+          },
+        ],
       },
     ],
   },
@@ -121,37 +131,37 @@ export const asyncRouterMap = [
     meta: {
       title: "财务管理",
       icon: "el-icon-s-data",
-      roles: ['boss', 'finance']
+      roles: ["boss", "finance"],
     },
-    children:[
-			{
-        path:'accounting', 
-        name:'accounting',
-				meta:{
-          title:'会计管理',
-          roles: ['boss', 'finance']
-				},
-				component: () => import('@/views/finance/Accounting'),
+    children: [
+      {
+        path: "accounting",
+        name: "accounting",
+        meta: {
+          title: "会计管理",
+          roles: ["boss", "finance"],
+        },
+        component: () => import("@/views/finance/Accounting"),
       },
       {
-        path:'capitalReport', 
-        name:'capitalReport',
-				meta:{
-          title:'总账报表',
-          roles: ['boss', 'finance']
-				},
-				component: () => import('@/views/finance/CapitalReport'),
+        path: "capitalReport",
+        name: "capitalReport",
+        meta: {
+          title: "总账报表",
+          roles: ["boss", "finance"],
+        },
+        component: () => import("@/views/finance/CapitalReport"),
       },
       {
-        path:'filemanage', 
-        name:'filemanage',
-				meta:{
-          title:'档案管理',
-          roles: ['boss', 'finance']
-				},
-				component: () => import('@/views/finance/FileManage'),
-			}
-		]
+        path: "filemanage",
+        name: "filemanage",
+        meta: {
+          title: "档案管理",
+          roles: ["boss", "finance"],
+        },
+        component: () => import("@/views/finance/FileManage"),
+      },
+    ],
   },
   {
     path: "/market",
@@ -160,28 +170,28 @@ export const asyncRouterMap = [
     meta: {
       title: "市场管理",
       icon: "el-icon-s-grid",
-      roles: ['boss', 'market']
+      roles: ["boss", "market"],
     },
-    children:[
-			{
-        path:'achievement', 
-        name:'achievement',
-				meta:{
-          title:'业绩表',
-          roles: ['boss', 'market']
-				},
-				component: () => import('@/views/market/Achievement'),
+    children: [
+      {
+        path: "achievement",
+        name: "achievement",
+        meta: {
+          title: "业绩表",
+          roles: ["boss", "market"],
+        },
+        component: () => import("@/views/market/Achievement"),
       },
       {
-        path:'markePlan', 
-        name:'markePlan',
-				meta:{
-          title:'营销计划',
-          roles: ['boss', 'market']
-				},
-				component: () => import('@/views/market/MakePlan'),
-      }
-		]
+        path: "markePlan",
+        name: "markePlan",
+        meta: {
+          title: "营销计划",
+          roles: ["boss", "market"],
+        },
+        component: () => import("@/views/market/MakePlan"),
+      },
+    ],
   },
   {
     path: "/personManage",
@@ -190,20 +200,21 @@ export const asyncRouterMap = [
     meta: {
       title: "员工管理",
       icon: "el-icon-s-custom",
-      roles: ['boss', 'personManage']
+      roles: ["boss", "personManage"],
     },
-    noDropdown:true,
-    children:[
-			{
-        path:'employeeList', 
-        name:'employeeList',
-				meta:{
-          title:'员工管理',
-          roles: ['boss', 'personManage']
-				},
-				component: () => import('@/views/personManage/EmployeeList'),
-      }
-		]
+    noDropdown: true,
+    children: [
+      {
+        path: "employeeList",
+        name: "employeeList",
+        meta: {
+          title: "员工管理",
+          icon: "el-icon-s-custom",
+          roles: ["boss", "personManage"],
+        },
+        component: () => import("@/views/personManage/EmployeeList"),
+      },
+    ],
   },
   {
     path: "/technology",
@@ -212,19 +223,19 @@ export const asyncRouterMap = [
     meta: {
       title: "项目管理",
       icon: "el-icon-s-cooperation",
-      roles: ['boss', 'technology']
+      roles: ["boss", "technology"],
     },
-    noDropdown:true,
-    children:[
-			{
-        path:'project', 
-        name:'project',
-				meta:{
-          title:'项目管理',
-          roles: ['boss', 'technology']
-				},
-				component: () => import('@/views/technology/Project'),
-      }
-		]
+    noDropdown: true,
+    children: [
+      {
+        path: "project",
+        name: "project",
+        meta: {
+          title: "项目管理",
+          roles: ["boss", "technology"],
+        },
+        component: () => import("@/views/technology/Project"),
+      },
+    ],
   },
 ];
