@@ -1,8 +1,12 @@
 <template>
   <header class="head-nav">
-    <span class="collapse">
-      <i class="collapse-icon el-icon-s-unfold"></i>
-    </span>
+    <div class="left-nav">
+      <span class="collapse">
+        <i class="collapse-icon el-icon-s-unfold"></i>
+      </span>
+      <bread></bread>
+    </div>
+
     <!-- :style="{ width: headNavWidth + 'px' }" -->
     <div class="right-nav">
       <div class="userinfo">
@@ -48,6 +52,8 @@ import { mapGetters } from "vuex";
 import { setToken, getToken } from "@/common/auth";
 import store from "@/store";
 
+import Bread from "./bread.vue";
+
 export default {
   name: "head-nav",
   data() {
@@ -87,28 +93,31 @@ export default {
       }
     },
   },
+  components: {
+    Bread,
+  },
 };
 </script>
 
 <style scoped lang="less">
-
 .head-nav {
-  padding: 0 20px;
   .fj(space-between, center);
   .logout {
     vertical-align: middle;
     cursor: pointer;
   }
 }
-.collapse{
+.collapse {
   cursor: pointer;
-  margin-left: -15px;
-  .collapse-icon{
+  .collapse-icon {
     font-size: 25px;
   }
 }
 .right-nav {
   .fj(flex-end, flex-start);
+}
+.left-nav{
+  .fj(flex-start, center);
 }
 .middle {
   align-items: center;

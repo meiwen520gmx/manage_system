@@ -1,15 +1,11 @@
 <template>
   <div class="bread_container">
-    <!-- <span @click="handleLefeMenu" class="bars">
-      <i
-        class="icon-fold"
-        :class="changeBarDirection ? 'el-icon-s-unfold' : 'el-icon-s-fold'"
-      ></i>
-    </span> -->
     <el-breadcrumb class="breadcrumb" separator="/">
-      <el-breadcrumb-item v-for="(name, index) in matchedArr" :key="index">
-        {{ name }}
-      </el-breadcrumb-item>
+      <transition-group name="breadcrumb">
+        <el-breadcrumb-item v-for="(name, index) in matchedArr" :key="index">
+          {{ name }}
+        </el-breadcrumb-item>
+      </transition-group>
     </el-breadcrumb>
   </div>
 </template>
@@ -54,7 +50,7 @@ export default {
 
 <style lang="less">
 .bread_container {
-  background-color: #eaebec;
+  // background-color: #eaebec;
   padding: 0 25px;
   .breadcrumb {
     height: 30px;

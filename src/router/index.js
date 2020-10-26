@@ -7,24 +7,13 @@ Vue.use(VueRouter);
 //默认不需要权限能访问的页面
 export const constantRouterMap = [
   {
-    path: "",
+    path: "/",
     component: Home,
-    redirect: "/index/index",
-    hidden: true,
-  },
-  {
-    path: "/index",
-    name: "index",
-    component: Home,
-    redirect: "/index/index",
-    noDropdown: true,
-    meta: {
-      title: "首页",
-      icon: "el-icon-s-home",
-    },
+    redirect: "/home",
     children: [
       {
-        path: "index",
+        path: "",
+        name: 'home',
         meta: {
           title: "首页",
           icon: "el-icon-s-home",
@@ -46,6 +35,7 @@ export const constantRouterMap = [
     children: [
       {
         path: "companyNotice",
+        name: "companyNotice",
         meta: {
           title: "公司公告",
           icon: "el-icon-s-comment",
@@ -66,6 +56,7 @@ export const constantRouterMap = [
     children: [
       {
         path: "personCenter",
+        name: "personCenter",
         meta: {
           title: "个人中心",
         },
@@ -73,6 +64,7 @@ export const constantRouterMap = [
         children: [
           {
             path: "companyNotice",
+            name: "companyNotice",
             meta: {
               title: "公司公告",
               icon: "el-icon-s-comment",
@@ -105,12 +97,7 @@ export const constantRouterMap = [
     component: () => import("@/views/errorPage/401"),
     hidden: true,
   },
-  // {
-  //   path: "/notice",
-  //   name: "Notice",
-  //   component: () => import("@/views/CompanyNotice"),
-  //   hidden: true,
-  // },
+  {path: "*", redirect: '/404', hidden: true}
 ];
 
 //实例化vue的时候只挂载constantRouterMap

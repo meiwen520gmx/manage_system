@@ -3,7 +3,7 @@
   <div class="aside-menu">
     <div class="menu-logo">
       <img class="logo" :src="logo" alt="company" />
-      <span class="title" v-show="sidebar.opened">高氏企业</span>
+      <span class="title" v-show="sidebar.opened">xxx后台</span>
     </div>
     <el-menu
       mode="vertical"
@@ -15,57 +15,7 @@
       :text-color="menuObj.textColor"
       :active-text-color="menuObj.activeTextColor"
     >
-      <!-- <aside-menu v-for="(item, index) in permission_routers" :key="item.path" :route="item" :base-path="route.path"/> -->
-      <!-- :style="{ width: sidebar.width + 'px' }" -->
-      <template v-for="(item, index) in permission_routers">
-        <!--表示 有一级菜单-->
-        <router-link
-          v-if="!item.hidden && item.noDropdown"
-          :to="item.path + '/' + item.children[0].path"
-          :key="index"
-        >
-          <el-menu-item
-            class="dropItem"
-            :index="item.path + '/' + item.children[0].path"
-          >
-            <i v-if="item.meta.icon" :class="item.meta.icon"></i>
-            <span v-if="item.meta.title" slot="title">{{
-              item.meta.title
-            }}</span>
-          </el-menu-item>
-        </router-link>
-        <!--表示 有二级或者多级菜单 -->
-        <el-submenu
-          v-if="
-            item.children &&
-              item.children.length >= 1 &&
-              !item.hidden &&
-              !item.noDropdown
-          "
-          :index="item.path"
-          :key="index"
-        >
-          <template slot="title">
-            <i v-if="item.meta.icon" :class="item.meta.icon"></i>
-            <span v-if="item.meta.title" slot="title">{{
-              item.meta.title
-            }}</span>
-          </template>
-          <!--直接定位到子路由上，子路由也可以实现导航功能-->
-          <router-link
-            v-for="(citem, cindex) in item.children"
-            :to="item.path + '/' + citem.path"
-            :key="cindex"
-          >
-            <el-menu-item
-              v-if="citem.meta.title"
-              :index="item.path + '/' + citem.path"
-            >
-              <span slot="title"> {{ citem.meta.title }}</span>
-            </el-menu-item>
-          </router-link>
-        </el-submenu>
-      </template>
+      <sidebar-item v-for="route in permission_routers" :key="route.path" :item="route" :base-path="route.path" />
     </el-menu>
   </div>
 </template>
@@ -73,7 +23,7 @@
 <script>
 import { mapGetters } from "vuex";
 import logoImg from "@/assets/imgs/logo.png";
-import AsideMenu from "@/components/asideMenu/Index";
+import SidebarItem from "./components/SidebarItem";
 export default {
   name: "left-Menu",
   data() {
@@ -91,7 +41,7 @@ export default {
   },
   methods: {},
   components: {
-    AsideMenu,
+    SidebarItem,
   },
 };
 </script>

@@ -1,38 +1,30 @@
 <template>
-    <div class="">
-        <transition name="fade">
-            <router-view></router-view>
-        </transition>
-    </div>
+  <transition name="fade-transform" mode="out-in">
+    <router-view :key="key" />
+  </transition>
 </template>
 <script>
-    export default {
-        name: '',
-        data () {
-            return {
-                
-            }
-        },
-        methods:{
-            
-        },
-        created(){
-            
-        },
-        mounted(){
-
-        }
-    }
+export default {
+  name: "",
+  data() {
+    return {};
+  },
+  computed: {
+    key() {
+      return this.$route.path;
+    },
+  },
+};
 </script>
 
-<style scoped lang='less'>
-    .fade-enter-active,
-    .fade-leave-active {
-        transition: opacity .3s
-    }
-    
-    .fade-enter,
-    .fade-leave-active {
-        opacity: 0
-    }
+<style scoped lang="less">
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
 </style>
